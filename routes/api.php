@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DatabaseSeederController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -32,13 +33,6 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'artisan/seed/'
 ], function () {
-    Route::post('teams', function () {
-        Artisan::call('db:seed --class=TeamSeeder');
-        return response()->json(['message' => 'Teams table was successfully seeded!']);
-    });
-
-    Route::post('members', function () {
-        Artisan::call('db:seed --class=MemberSeeder');
-        return response()->json(['message' => 'Members table was successfully seeded!']);
-    });
+    Route::post('members', [DatabaseSeederController::class, 'member']);
+    Route::post('teams', [DatabaseSeederController::class, 'team']);
 });
