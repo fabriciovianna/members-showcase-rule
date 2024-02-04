@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +26,12 @@ Route::group([
 });
 
 
-Route::middleware('api')->get('/user', function (Request $request) {
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'artisan/seed/'
+], function () {
+    Route::post('teams', function () {
+        Artisan::call('db:seed --class=TeamSeeder');
+    });
+    
 });
