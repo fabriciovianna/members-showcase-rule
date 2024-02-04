@@ -13,6 +13,7 @@ class TeamSeeder extends Seeder
     {
         $this->teamModel = $teamModel;
     }
+    
     /**
      * Run the database seeds.
      */

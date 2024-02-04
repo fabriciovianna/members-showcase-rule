@@ -26,12 +26,19 @@ Route::group([
 });
 
 
+
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'artisan/seed/'
 ], function () {
     Route::post('teams', function () {
         Artisan::call('db:seed --class=TeamSeeder');
+        return response()->json(['message' => 'Teams table was successfully seeded!']);
     });
-    
+
+    Route::post('members', function () {
+        Artisan::call('db:seed --class=MemberSeeder');
+        return response()->json(['message' => 'Members table was successfully seeded!']);
+    });
 });
