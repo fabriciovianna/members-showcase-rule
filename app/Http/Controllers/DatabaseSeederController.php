@@ -69,7 +69,7 @@ class DatabaseSeederController extends Controller
     public function config()
     {
         try {
-            Artisan::call('db:seed --class=EventsSeeder');
+            Artisan::call('db:seed --class=ConfigSeeder');
             return response()->json(['message' => 'Events table was successfully seeded!']);
         } catch (\Throwable $th) {
             report($th);
