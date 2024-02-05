@@ -12,9 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('preferences', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('description', 255)->nullable(false);
+            $table->date('event_date')->nullable(false);
             $table->foreignIdFor(Member::class)->nullable(false);
             $table->timestamps();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('preferences');
+        Schema::dropIfExists('events');
     }
 };

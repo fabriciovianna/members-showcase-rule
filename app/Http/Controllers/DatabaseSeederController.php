@@ -55,7 +55,7 @@ class DatabaseSeederController extends Controller
     public function event()
     {
         try {
-            Artisan::call('db:seed --class=EventsSeeder');
+            Artisan::call('db:seed --class=EventSeeder');
             return response()->json(['message' => 'Events table was successfully seeded!']);
         } catch (\Throwable $th) {
             report($th);

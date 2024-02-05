@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('role', 255)->nullable(true);
             $table->date('admission_date')->nullable(false)->useCurrent();
             $table->date('resignation_date')->nullable(true);
-            $table->foreignIdFor(Team::class);
+            $table->foreignIdFor(Team::class)->nullable(false);
             $table->timestamps();
         });
     }
