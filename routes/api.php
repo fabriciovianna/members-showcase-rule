@@ -35,4 +35,7 @@ Route::group([
 ], function () {
     Route::post('members', [DatabaseSeederController::class, 'member']);
     Route::post('teams', [DatabaseSeederController::class, 'team']);
+    Route::post('preferences', [DatabaseSeederController::class, 'preference']);
+    Route::post('events', [DatabaseSeederController::class, 'event']);
+    Route::post('configs', [DatabaseSeederController::class, 'config']);
 });

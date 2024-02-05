@@ -18,9 +18,6 @@ class MemberFactory extends Factory
      */
     public function definition(): array
     {
-        // $teamIds = DB::table('teams')->select('id')->get();
-        // $teamId = fake()->randomElement($teamIds)->id;
-
         return [
             'name' => fake()->name(),
             'role' => fake()->text(10),
