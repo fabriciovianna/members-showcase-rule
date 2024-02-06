@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DatabaseSeederController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,6 @@ Route::group([
     Route::post('me', [AuthController::class, 'me']);
 });
 
-
-
-
 Route::group([
     'middleware' => 'api',
     'prefix' => 'artisan/seed/'
@@ -38,4 +36,12 @@ Route::group([
     Route::post('preferences', [DatabaseSeederController::class, 'preference']);
     Route::post('events', [DatabaseSeederController::class, 'event']);
     Route::post('configs', [DatabaseSeederController::class, 'config']);
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'v1/team'
+], function () {
+    Route::get('/', [TeamController::class, 'index']);
+    Route::post('/store', [TeamController::class, 'store']);
 });
