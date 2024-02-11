@@ -43,5 +43,6 @@ Route::group([
     'prefix' => 'v1/team'
 ], function () {
     Route::get('/', [TeamController::class, 'index']);
+    Route::get('/show/{id}', [TeamController::class, 'show']);
     Route::post('/store', [TeamController::class, 'store']);
 });
