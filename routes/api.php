@@ -43,6 +43,8 @@ Route::group([
     'prefix' => 'v1/team'
 ], function () {
     Route::get('/', [TeamController::class, 'index']);
-    Route::get('/show/{id}', [TeamController::class, 'show']);
-    Route::post('/store', [TeamController::class, 'store']);
+    Route::get('/show/{team_id}', [TeamController::class, 'show']);
+    Route::post('/create', [TeamController::class, 'create']);
+    Route::put('/update/{team_id}', [TeamController::class, 'update']);
+    Route::delete('/delete/{team_id}', [TeamController::class, 'delete']);
 });

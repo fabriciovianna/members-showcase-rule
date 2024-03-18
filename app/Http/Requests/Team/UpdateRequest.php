@@ -4,7 +4,7 @@ namespace App\Http\Requests\Team;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShowRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,10 @@ class ShowRequest extends FormRequest
     {
         return [
             'team_id' => ['required', 'numeric'],
+            'name' => ['string', 'required', 'min:1', 'max:255'],
+            'description' => ['string', 'nullable', 'min:1', 'max:255'],
+            'icon' => ['string', 'nullable'],
+            'birthday' => ['date', 'nullable'],
         ];
     }
 
