@@ -15,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\TeamRepositoryInterface',
             'App\Repositories\Eloquent\TeamRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\MemberRepositoryInterface',
+            'App\Repositories\Eloquent\MemberRepository'
+        );
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Team;
+namespace App\Http\Requests\Member;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,14 +14,14 @@ class ShowRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'team_id' => ['required', 'numeric'],
+            'member_id' => ['required', 'numeric'],
         ];
     }
 
     public function prepareForValidation()
     {
         $this->merge([
-            'team_id' => $this->route('team_id'),
+            'member_id' => $this->route('member_id'),
         ]);
     }
 }

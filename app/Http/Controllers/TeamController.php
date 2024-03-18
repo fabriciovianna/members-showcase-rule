@@ -30,7 +30,7 @@ class TeamController extends Controller
      */
     public function create(CreateRequest $request)
     {
-        return response(TeamResource::make(Team::create($request->validated())), Response::HTTP_CREATED);
+        return response(TeamResource::make($this->teamRepository->create($request->validated())), Response::HTTP_CREATED);
     }
 
     /**

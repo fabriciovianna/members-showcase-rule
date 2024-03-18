@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DatabaseSeederController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -40,11 +41,26 @@ Route::group([
 
 Route::group([
     'middleware' => 'api',
-    'prefix' => 'v1/team'
+    'prefix' => 'v1'
 ], function () {
-    Route::get('/', [TeamController::class, 'index']);
-    Route::get('/show/{team_id}', [TeamController::class, 'show']);
-    Route::post('/create', [TeamController::class, 'create']);
-    Route::put('/update/{team_id}', [TeamController::class, 'update']);
-    Route::delete('/delete/{team_id}', [TeamController::class, 'delete']);
+
+    Route::group([
+        'prefix' => '/team'
+    ], function () {
+        Route::get('/', [TeamController::class, 'index']);
+        Route::get('/show/{team_id}', [TeamController::class, 'show']);
+        Route::post('/create', [TeamController::class, 'create']);
+        Route::put('/update/{team_id}', [TeamController::class, 'update']);
+        Route::delete('/delete/{team_id}', [TeamController::class, 'delete']);
+    });
+
+    Route::group([
+        'prefix' => '/member'
+    ], function () {
+        Route::get('/', [MemberController::class, 'index']);
+        Route::get('/show/{member_id}', [MemberController::class, 'show']);
+        Route::post('/create', [MemberController::class, 'create']);
+        Route::put('/update/{member_id}', [MemberController::class, 'update']);
+        Route::delete('/delete/{member_id}', [MemberController::class, 'delete']);
+    });
 });

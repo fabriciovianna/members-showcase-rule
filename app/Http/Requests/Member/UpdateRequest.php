@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Team;
+namespace App\Http\Requests\Member;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,18 +14,19 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'team_id' => ['required', 'numeric'],
+            'member_id' => ['required', 'numeric'],
             'name' => ['string', 'required', 'min:1', 'max:255'],
-            'description' => ['string', 'nullable', 'min:1', 'max:255'],
-            'icon' => ['string', 'nullable'],
-            'birthday' => ['date', 'nullable'],
+            'role' => ['string', 'nullable', 'min:1', 'max:255'],
+            'admission_date' => ['date', 'required'],
+            'resignation_date' => ['date', 'nullable'],
+            'team_id' => ['numeric', 'required', 'exists:teams,id'],
         ];
     }
 
     public function prepareForValidation()
     {
         $this->merge([
-            'team_id' => $this->route('team_id'),
+            'member_id' => $this->route('member_id'),
         ]);
     }
 }
