@@ -24,7 +24,6 @@ class TeamRepository implements TeamRepositoryInterface
     public function find($id)
     {
         $team = $this->model->find($id);
-        $team->members;
 
         if (!$team)
             throw new RepositoryException('Team not found!', Response::HTTP_NOT_FOUND);
@@ -49,6 +48,7 @@ class TeamRepository implements TeamRepositoryInterface
 
             return $this->find($id);
         } catch (\Exception $e) {
+            dd($e);
             throw new RepositoryException($e->getMessage() ?? 'There was a problem trying to update this register!', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
