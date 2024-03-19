@@ -1,11 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DatabaseSeederController;
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\TeamController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\{AuthController, DatabaseSeederController, EventController, MemberController, TeamController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,5 +57,15 @@ Route::group([
         Route::post('/create', [MemberController::class, 'create']);
         Route::put('/update/{member_id}', [MemberController::class, 'update']);
         Route::delete('/delete/{member_id}', [MemberController::class, 'delete']);
+    });
+
+    Route::group([
+        'prefix' => '/event'
+    ], function () {
+        Route::get('/', [EventController::class, 'index']);
+        Route::get('/show/{event_id}', [EventController::class, 'show']);
+        Route::post('/create', [EventController::class, 'create']);
+        Route::put('/update/{event_id}', [EventController::class, 'update']);
+        Route::delete('/delete/{event_id}', [EventController::class, 'delete']);
     });
 });

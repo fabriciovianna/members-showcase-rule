@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MemberResource extends JsonResource
+class EventResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,10 @@ class MemberResource extends JsonResource
     {
         return [
             'id' => $this['id'],
-            'name' => $this['name'],
-            'role' => $this['role'],
-            'admission_date' => $this['admission_date'],
-            'resignation_date' => $this['resignation_date'],
-            'team' => TeamResource::make($this['team']),
+            'description' => $this['description'],
+            'event_date' => $this['event_date'],
+            'member' => MemberResource::make($this['member']),
+
         ];
     }
 }
