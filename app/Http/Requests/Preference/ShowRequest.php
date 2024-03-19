@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Event;
+namespace App\Http\Requests\Preference;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class ShowRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,17 +14,14 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'event_id' => ['required', 'numeric'],
-            'description' => ['string', 'nullable', 'min:1', 'max:255'],
-            'event_date' => ['date', 'nullable'],
-            'member_id' => ['numeric', 'nullable', 'exists:members,id'],
+            'preference_id' => ['required', 'numeric'],
         ];
     }
 
     public function prepareForValidation()
     {
         $this->merge([
-            'event_id' => $this->route('event_id'),
+            'preference_id' => $this->route('preference_id'),
         ]);
     }
 }

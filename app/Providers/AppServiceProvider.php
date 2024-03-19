@@ -25,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\EventRepositoryInterface',
             'App\Repositories\Eloquent\EventRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Contracts\PreferenceRepositoryInterface',
+            'App\Repositories\Eloquent\PreferenceRepository'
+        );
     }
 
     /**

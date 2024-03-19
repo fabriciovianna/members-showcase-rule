@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AuthController, DatabaseSeederController, EventController, MemberController, TeamController};
+use App\Http\Controllers\{AuthController, DatabaseSeederController, EventController, MemberController, PreferenceController, TeamController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,5 +67,15 @@ Route::group([
         Route::post('/create', [EventController::class, 'create']);
         Route::put('/update/{event_id}', [EventController::class, 'update']);
         Route::delete('/delete/{event_id}', [EventController::class, 'delete']);
+    });
+
+    Route::group([
+        'prefix' => '/preference'
+    ], function () {
+        Route::get('/', [PreferenceController::class, 'index']);
+        Route::get('/show/{preference_id}', [PreferenceController::class, 'show']);
+        Route::post('/create', [PreferenceController::class, 'create']);
+        Route::put('/update/{preference_id}', [PreferenceController::class, 'update']);
+        Route::delete('/delete/{preference_id}', [PreferenceController::class, 'delete']);
     });
 });

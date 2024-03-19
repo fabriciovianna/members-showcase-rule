@@ -3,17 +3,17 @@
 namespace App\Repositories\Eloquent;
 
 use App\Exceptions\RepositoryException;
-use App\Models\Team;
-use App\Repositories\Contracts\TeamRepositoryInterface;
+use App\Models\Preference;
+use App\Repositories\Contracts\PreferenceRepositoryInterface;
 use Illuminate\Http\Response;
 
-class TeamRepository implements TeamRepositoryInterface
+class PreferenceRepository implements PreferenceRepositoryInterface
 {
     private $model;
 
-    public function __construct(Team $team)
+    public function __construct(Preference $preference)
     {
-        $this->model = $team;
+        $this->model = $preference;
     }
 
     public function findAll()
@@ -23,13 +23,12 @@ class TeamRepository implements TeamRepositoryInterface
 
     public function find($id)
     {
-        $team = $this->model->find($id);
-        $team->members;
+        $preference = $this->model->find($id);
 
-        if (!$team)
-            throw new RepositoryException('Team not found!', Response::HTTP_NOT_FOUND);
+        if (!$preference)
+            throw new RepositoryException('Preference not found!', Response::HTTP_NOT_FOUND);
 
-        return $team;
+        return $preference;
     }
 
     public function create($data = null)
@@ -44,8 +43,8 @@ class TeamRepository implements TeamRepositoryInterface
     public function update($id, $data = null)
     {
         try {
-            $team = $this->find($id);
-            $team->update($data);
+            $preference = $this->find($id);
+            $preference->update($data);
 
             return $this->find($id);
         } catch (\Exception $e) {
@@ -59,7 +58,7 @@ class TeamRepository implements TeamRepositoryInterface
             $this->find($id);
             $this->model->destroy($id);
 
-            return ['message' => 'Team successfully deleted!'];
+            return ['message' => 'Preference successfully deleted!'];
         } catch (\Exception $e) {
             throw new RepositoryException($e->getMessage() ?? 'There was a problem trying to destroy this register!', Response::HTTP_INTERNAL_SERVER_ERROR);
         }

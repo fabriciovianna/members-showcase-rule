@@ -13,6 +13,6 @@ class Team extends Model
 
     public function members()
     {
-        return $this->hasMany(Member::class, 'member_id', 'id');
+        return $this->hasMany(Member::class, 'team_id', 'id');
     }
 }

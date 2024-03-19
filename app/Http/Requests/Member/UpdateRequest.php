@@ -15,11 +15,11 @@ class UpdateRequest extends FormRequest
     {
         return [
             'member_id' => ['required', 'numeric'],
-            'name' => ['string', 'required', 'min:1', 'max:255'],
+            'name' => ['string', 'nullable', 'min:1', 'max:255'],
             'role' => ['string', 'nullable', 'min:1', 'max:255'],
-            'admission_date' => ['date', 'required'],
+            'admission_date' => ['date', 'nullable'],
             'resignation_date' => ['date', 'nullable'],
-            'team_id' => ['numeric', 'required', 'exists:teams,id'],
+            'team_id' => ['numeric', 'nullable', 'exists:teams,id'],
         ];
     }
 

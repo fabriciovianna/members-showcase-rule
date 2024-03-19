@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TeamResource extends JsonResource
+class PreferenceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,8 @@ class TeamResource extends JsonResource
     {
         return [
             'id' => $this['id'],
-            'name' => $this['name'],
             'description' => $this['description'],
-            'birthday' => $this['birthday'],
-            'members' => MemberListResource::collection($this['members']),
+            'member' => MemberResource::make($this['member']),
         ];
     }
 }
