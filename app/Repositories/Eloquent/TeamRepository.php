@@ -48,7 +48,6 @@ class TeamRepository implements TeamRepositoryInterface
 
             return $this->find($id);
         } catch (\Exception $e) {
-            dd($e);
             throw new RepositoryException($e->getMessage() ?? 'There was a problem trying to update this register!', Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
