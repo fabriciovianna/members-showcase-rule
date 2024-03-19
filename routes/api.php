@@ -14,17 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-], function () {
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('me', [AuthController::class, 'me']);
-});
 
 Route::group([
-    'middleware' => 'api',
     'prefix' => 'artisan/seed/'
 ], function () {
     Route::post('members', [DatabaseSeederController::class, 'member']);
@@ -35,7 +26,6 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => 'api',
     'prefix' => 'v1'
 ], function () {
 
