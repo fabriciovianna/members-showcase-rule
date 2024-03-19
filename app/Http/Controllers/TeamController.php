@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Team\{CreateRequest, ShowRequest, UpdateRequest};
 use App\Http\Resources\TeamResource;
-use App\Models\Team;
 use App\Repositories\Contracts\TeamRepositoryInterface;
 use Illuminate\Http\Response;
 

@@ -30,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\PreferenceRepositoryInterface',
             'App\Repositories\Eloquent\PreferenceRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Contracts\ConfigRepositoryInterface',
+            'App\Repositories\Eloquent\ConfigRepository'
+        );
     }
 
     /**
